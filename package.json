@@ -44,7 +44,8 @@
     "jshint": "2.9.4",
     "level-js": "2.2.4",
     "mocha": "3.0.2",
-    "uglify-js": "2.7.3"
+    "uglify-js": "2.7.3",
+    "jest": "^28.1.3"
   },
   "main": "./lib/bcoin.js",
   "preferGlobal": true,
@@ -61,7 +62,8 @@
     "uglify": "uglifyjs -m -o browser/bcoin.min.js browser/bcoin.js && uglifyjs -m -o browser/bcoin-master.min.js browser/bcoin-master.js",
     "clean": "rm browser/bcoin.js browser/bcoin.min.js browser/bcoin-master.js browser/bcoin-master.min.js",
     "lint": "jshint lib/ || exit 0",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -c jsdoc.json",
+    "gen-test-suite-hash": "jest --verbose ./generated-tests/backend_sha256_backend_hash_js.test.js --coverage=true"
   },
   "browser": {
     "./lib/blockchain/layout": "./lib/blockchain/layout-browser.js",
@@ -93,6 +95,9 @@
     "secp256k1": "./browser/empty.js"
   },
   "browserify": {
-    "transform": ["./browser/transform.js", "babelify"]
+    "transform": [
+      "./browser/transform.js",
+      "babelify"
+    ]
   }
 }
